@@ -1,0 +1,2 @@
+The pdfgeneration module uses css2fop to generate PDFs from SilverStripe templates.
+

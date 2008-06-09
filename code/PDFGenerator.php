@@ -36,7 +36,7 @@ class PDFGenerator {
 		
 		// Tidy it
 		@exec("tidy -asxhtml -utf8 -output $CLI_tidyFile $CLI_htmlFile", $output, $return);
-		if($return > 0) user_error("Tidy failed: " . implode("\n", $output), E_USER_ERROR);
+		//if($return > 0) user_error("Tidy failed: " . implode("\n", $output), E_USER_ERROR);
 		
 		// Strip unicode
 		$tidyContent = file_get_contents($tidyFile);
@@ -49,10 +49,12 @@ class PDFGenerator {
         if(file_exists("/usr/share/java/bin/java")) $javabin = "/usr/share/java/bin/java";
         else $javabin = "java";
 
-		$CLI_jarFile = escapeshellarg(Director::baseFolder() . '/pdfgeneration/java/css2fopnew1_5_2.jar');
+		$CLI_jarFile = escapeshellarg(Director::baseFolder() . '/pdfgeneration/java/css2fopnew1_4_1.jar');
 
 		$response = exec("$javabin -jar $CLI_jarFile  $CLI_tidyFile -pdf $CLI_pdfFile paper-size=a4 &> /dev/stdout", $output, $return);
 		if($return > 0) user_error("css2fop failed: " . implode("\n", $output), E_USER_ERROR);
+		//print_r($output);
+		//die();
 
 		return file_exists($pdfFile);
 	}

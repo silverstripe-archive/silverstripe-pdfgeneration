@@ -60,7 +60,8 @@ class PDFGenerator {
 	}
 	
 	function sendToBrowser() {
-		$filename = "../assets/contract.pdf";
+		if(!file_exists("../assets/.private")) mkdir("../assets/.private");
+		$filename = "../assets/.private/contract.pdf";
 		$this->generate($filename);
 		HTTP::sendFileToBrowser(file_get_contents($filename), basename($filename));
 	}

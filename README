@@ -1,2 +1,28 @@
+###############################################
+PDF Generation Module
+###############################################
+
 The pdfgeneration module uses css2fop to generate PDFs from SilverStripe templates.
+
+Maintainer Contact
+-----------------------------------------------
+Sam Minnée (Nickname: sminnee)
+<sam (at) silverstripe (dot) com>
+
+Requirements
+-----------------------------------------------
+
+Documentation
+-----------------------------------------------
+http://doc.silverstripe.com/doku.php?id=modules:pdfgeneration
+
+Installation Instructions
+-----------------------------------------------
+
+Usage Overview
+-----------------------------------------------
+
+Known issues:
+-----------------------------------------------
+
 

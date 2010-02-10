@@ -63,7 +63,9 @@ class PDFGenerator {
 		if(!file_exists("../assets/.private")) mkdir("../assets/.private");
 		$filename = "../assets/.private/contract.pdf";
 		$this->generate($filename);
-		HTTP::sendFileToBrowser(file_get_contents($filename), basename($filename));
+
+		$response = SS_HTTPRequest::send_file(file_get_contents($filename), basename($filename), 'application/pdf');
+		$response->output();
 	}
 
 	function removeuni($content){

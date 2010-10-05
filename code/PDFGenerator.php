@@ -143,12 +143,21 @@ XML;
 		return file_exists($pdfFile);
 	}
 	
-	function sendToBrowser() {
-		if(!file_exists("../assets/.private")) mkdir("../assets/.private");
-		$filename = "../assets/.private/contract.pdf";
+	/**
+	 * Generates a pdf file and send it to the browser as a file download
+	 * 
+	 * @param string
+	 */
+	function sendToBrowser($filename = null) {
+		if($filename === null) {
+			$filename = "../assets/.private/" . uniqid() . '.pdf';
+		}
+		
+		if(!file_exists(dirname($filename))) FileSystem::makeFolder(dirname($filename));
 		$this->generate($filename);
 
 		$response = SS_HTTPRequest::send_file(file_get_contents($filename), basename($filename), 'application/pdf');
+		
 		$response->output();
 	}
 

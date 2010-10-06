@@ -18,6 +18,7 @@ Installation Instructions
 
  1. Unpack the module's archive into a directory called pdfgeneration.
  2. Ensure that you have Java installed, and that the 'java' command is in the path.
+ 3. You can visit dev/tasks/TestPDFGeneratorTask to check that the PDF generation is functioning correctly.
 
 Usage Overview
 --------------
@@ -25,11 +26,10 @@ Usage Overview
 To generate a PDF, you will first need to make an HTML/CSS template that will
 provide the content of the PDF.
 
-In both of these examples, `$objToBeRendered` is going to be rendered with
-MyTemplateName.ss.
+In both of these examples, `$objToBeRendered` is going to be rendered with `MyTemplateName.ss`.
 
 Use this syntax to send a PDF file to the user.  You could define this as a
-method on a controller, for example
+method on a controller, for example:
 
     function downloadpdf() {
         $objToBeRendered = $this;
@@ -37,7 +37,7 @@ method on a controller, for example
         return $pdf->sendToBrowser();
     }
 
-Use this syntax to save a PDF file to a location on the server.
+Alternatively, use this syntax to save a PDF file to a location on the server:
 
     $pdf = new PDFGenerator($objToBeRendered, 'MyTemplateName', "my-pdf-filename.pdf");
     $pdf->generate("../assets/my-pdf-filename.pdf");

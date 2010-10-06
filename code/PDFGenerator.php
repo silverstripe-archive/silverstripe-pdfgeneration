@@ -90,10 +90,14 @@ XML;
 		$CLI_foFile = escapeshellarg("$baseFile.fo");
 
 		// Render content via template
-		SSViewer::setOption('rewriteHashlinks', false);
-		$content = $this->data->renderWith($this->template);
+		if(is_string($this->data)) {
+			$content = $this->data;
+		} else {
+			SSViewer::setOption('rewriteHashlinks', false);
+			$content = $this->data->renderWith($this->template);
+			SSViewer::setOption('rewriteHashlinks', true);
+		}
 		$content = $this->removeuni($content);
-		SSViewer::setOption('rewriteHashlinks', true);
 
 		// Write content to file
 		$fh = fopen($htmlFile, "w+") or user_error("Couldn't open $baseFile.html for writing", E_USER_ERROR);

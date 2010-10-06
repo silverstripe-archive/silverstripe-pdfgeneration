@@ -51,7 +51,7 @@ class PDFGenerator {
 
 		$CLI_jarFile = escapeshellarg(Director::baseFolder() . '/pdfgeneration/java/css2fopnew1_4_1.jar');
 
-		$response = exec("$javabin -jar $CLI_jarFile  $CLI_tidyFile -pdf $CLI_pdfFile paper-size=a4 &> /dev/stdout", $output, $return);
+		$response = exec("$javabin -jar $CLI_jarFile  $CLI_tidyFile -pdf $CLI_pdfFile paper-size=a4", $output, $return);
 		if($return > 0) user_error("css2fop failed: " . implode("\n", $output), E_USER_ERROR);
 		//print_r($output);
 		//die();

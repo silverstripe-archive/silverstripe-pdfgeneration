@@ -1,0 +1,16 @@
+{
+	"name": "silverstripe-labs/pdfgeneration",
+	"description": "Generate PDFs from SS templates using css2xslfo.",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe-labs", "pdfgeneration", "pdf", "files"],
+	"authors": [
+	{
+		"name": "Sam Minnée",
+		"email": "sam@silverstripe.com"
+	}
+	],
+	"require":
+	{
+		"silverstripe/framework": "2.4.*"
+	}
+}
